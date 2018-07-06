@@ -10,3 +10,5 @@ secret: mysecret123
 
 # the file path pointing to your data model
 datamodel: datamodel.graphql
+
+cluster: public-flannelmind-846/prisma-us1

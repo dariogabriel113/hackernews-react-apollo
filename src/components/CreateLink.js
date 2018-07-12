@@ -1,4 +1,6 @@
-import React, { Component } from 'react'
+import React, { Component } from 'react';
+import { graphql } from 'react-apollo';
+import gql from 'graphql-tag';
 
 class CreateLink extends Component {
     state = {
@@ -31,7 +33,13 @@ class CreateLink extends Component {
     }
 
     _createLink = async () => {
-        //
+        const { description, url } = this.state
+        await this.props.postMutation({
+            variables: {
+                description,
+                url
+            }
+        })
     }
 }
 

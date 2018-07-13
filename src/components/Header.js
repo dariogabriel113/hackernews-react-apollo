@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import { Link } from 'react-router-dom';
 import { withRouter } from 'react-router';
+import { AUTH_TOKEN } from '../constants';
 
 class Header extends Component {
   render() {

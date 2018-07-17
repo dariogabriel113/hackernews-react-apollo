@@ -42,6 +42,73 @@ class LinkList extends Component {
 
         store.writeQuery({ query: FEED_QUERY, data })
     }
+
+    _subscribeToNewLinks = () => {
+        this.props.feedQuery.subscribeToMore({
+            document: gql`
+            subscription {
+              newLink {
+                node {
+                  id
+                  url
+                  description
+                  createdAt
+                  postedBy {
+                    id
+                    name
+                  }
+                  votes {
+                    id
+                    user {
+                      id
+                    }
+                  }
+                }
+              }
+            }
+          `,
+            updateQuery: (previous, { subscriptionData }) => {
+                // 
+            }
+        })
+    }
+    componentDidMount() {
+        this._subscribeToNewLinks()
+        this._subscribeToNewVotes()
+    }
+
+    _subscribeToNewVotes = () => {
+        this.props.feedQuery.subscribeToMore({
+            document: gql`
+                    subscription {
+                      newVote {
+                        node {
+                          id
+                          link {
+                            id
+                            url
+                            description
+                            createdAt
+                            postedBy {
+                              id
+                              name
+                            }
+                            votes {
+                              id
+                              user {
+                                id
+                              }
+                            }
+                          }
+                          user {
+                            id
+                          }
+                        }
+                      }
+                    }
+                  `,
+        })
+    }
 }
 
 export const FEED_QUERY = gql`

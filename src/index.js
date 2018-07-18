@@ -11,7 +11,7 @@ import { InMemoryCache } from 'apollo-cache-inmemory'
 
 import { BrowserRouter } from 'react-router-dom'
 
-import { AUTH_TOKEN } from './components/constants'
+import { AUTH_TOKEN } from './constants'
 
 import { ApolloLink, split } from 'apollo-client-preset'
 import { WebSocketLink } from 'apollo-link-ws'

@@ -1,5 +1,5 @@
 import React, { Component } from 'react'
-import { AUTH_TOKEN } from './constants'
+import { AUTH_TOKEN } from '../constants'
 import { timeDifferenceForDate } from '../utils'
 import { graphql } from 'react-apollo'
 import gql from 'graphql-tag'
